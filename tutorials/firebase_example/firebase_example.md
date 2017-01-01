@@ -64,16 +64,13 @@ To maintan syncing to the database, we will then setup a firebase stream callbac
 to set to zero if necessary. To put the increment logic
 in callback for `runTransaction` method. 
 
+The other variable that we need handle is the `_messageRef` database variable which we'll use to record the message that will be displayed. The message string will look something like: 'hello world 1'. All
+the logic to recording the message also inside the `_increment` method.
 
-The other variable that we need handle is the `_messageRef` variable
-which will hold the message that will be displayed. The message string
-is: 
-
-
-In short, the steps are:
-1. 
-2.
-3.
+You'll notice that we record to the database in two different ways.
+For `_counter` we use the method `runTransaction`, but for
+the message we use `_messageRef.push().ref()` and we
+pass in a Map type e.g. tk. 
 
 
 ## DB transactions for the counter
