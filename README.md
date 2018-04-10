@@ -27,6 +27,13 @@ View -> Command Palette
 doctor
 Select: Flutter: Run Flutter Doctor
 ```
+
+## First app 
+```
+View -> Command Pallette
+type: flutter
+```
+
 https://flutter.io/get-started/editor/#vscode
 
 
