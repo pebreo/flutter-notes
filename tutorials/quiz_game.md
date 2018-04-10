@@ -59,7 +59,7 @@ class Quiz {
 
     var questions;
     var currentQuestionIndex = -1;
-    var score;
+    var score = 0;
     
     Quiz(this.questions);
     get length => questions.length;
@@ -116,7 +116,7 @@ class Quiz {
 
     var questions;
     var currentQuestionIndex = -1;
-    var score;
+    var score = 0;
     
     Quiz(this.questions);
     get length => questions.length;
@@ -192,7 +192,22 @@ I can visualize the generic type taking in another type as parameter.
 
 For more details about generic types in Dart checkout out [Dart Tour page](https://www.dartlang.org/guides/language/language-tour#generics).
 
+A tip about refactoring: you'll save time if you use your IDE's "rename variables"
+or "factor variable" feature to automatically rename all variables in that file or project.
+If you are working in just one file, then you can just use Find/Replace feature of your editor.
 
+##### Refactor `Quiz` constructor
+Because we want to randomize the questions given to the user, we 
+will use the built-in `shuffle()` method which comes with Dart.
+After refactoring, our constructor just increased by one line and a couple of curly brackets
+but really the only thing we had to change was running a method on our `_question` variable
+upon instantiation. 
+
+##### Full working code
+After refactoring, let's now run the code again.
+
+
+let's run out code. As before, copy and paste tk.
 ```dart
 class Quiz {
   // private because of underscore
@@ -222,10 +237,19 @@ class Quiz {
   }
 }
 ```
+Note  that private variables are only accessible in that file but
+not if you important that class from another file.
 
 
 ##### Full refactored classes
 ```dart
+
+void main() {
+    var q1 = new Question('The sky is blue', true);
+    var q2 = new Question('Summer is hot', true);
+    var quiz = new Quiz([q1,q2]);
+
+}
 class Question {
   final String question;
   final bool answer;
