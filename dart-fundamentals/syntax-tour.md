@@ -1,7 +1,17 @@
-
+### Map literals
+```dart
+main() {
+    var x = {'b': 99};
+    var foo = {
+      "bar": x,
+      "baz": 5,
+    };
+  print(foo["bar"]);
+}
+```
 
 ### Named parameters
-```
+```dart
 main() {
     foo(x: true); // named parameter
     baz(false);  // unnamed param
@@ -21,13 +31,14 @@ baz(bool y) {
 
 
 #### Lists initialization
-```
-var mylist = String<List>();
+`List foo` is the same as `List<dynamic> foo`.
+```dart
+var mylist = List<String>();
 var mylist = <List>[]
 ```
 
 ### Constructors
-```
+```dart
 class Person {
     String name;
 
@@ -38,7 +49,7 @@ var p = Person('john')
 ```
 
 ### Getters
-```
+```dart
 class Quiz {
   // private because of underscore
   List<Question> _questions;

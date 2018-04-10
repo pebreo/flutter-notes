@@ -34,6 +34,10 @@ View -> Command Pallette
 type: flutter
 ```
 
+## Upgrading Flutter SDK and VSC extensions
+```
+$ flutter upgrade
+```
 
 ## Resources
 
