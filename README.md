@@ -34,6 +34,11 @@ View -> Command Pallette
 type: flutter
 ```
 
+
+## Resources
+
+flutterexamples.com
+
 https://flutter.io/get-started/editor/#vscode
 
 
