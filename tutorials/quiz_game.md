@@ -163,16 +163,64 @@ we now add more specific types to our variables' type declarations.
 ##### Refactor `Question` class
 
 The first thing we'll do is make `question` a `final String` because tk.
-Next we'll
+Next we'll, change the type declaration for `answer` to `final bool`.
+In Dart, a `final` variable means it is set only once. 
+
+You might be wondering how `final` is different than `const`? Well, `const` 
+is more appropriate for numbers whereas `final` can be used for objects or 
+instance variables (aka object properties). In our case, we are
+declaring object properties so we use `final`.
 
 ```dart
-
+class Question {
+  final String question;
+  final bool answer;
+  
+  Question(this.question, this.answer);
+}
 ```
 
+
 ##### Refactor `Quiz` class 
+One thing I like about Dart is that making variables private
+is as easy as putting an underscore in front of the variable name. 
+You'll notice that we changed all the instance variables to private.
+I also specified `_questions` as a `List` of type `Question`.
+The `List<Question>` syntax is a so-called generic (aka parametized)
+type. I like calling it parametized because it is more descriptive and 
+I can visualize the generic type taking in another type as parameter.
+
+For more details about generic types in Dart checkout out [Dart Tour page](https://www.dartlang.org/guides/language/language-tour#generics).
+
 
 ```dart
+class Quiz {
+  // private because of underscore
+  List<Question> _questions;
+  int _currentQuestionIndex = -1;
+  int _score = 0;
 
+  
+  Quiz(this._questions) {
+    _questions.shuffle();
+  }
+
+  // getters
+  List<Question> get questions => _questions;
+  int get length => _questions.length;
+  int get questionNumber => _currentQuestionIndex+1;
+  int get score => _score;
+
+  // getter method
+  Question get nextQuestion {
+    _currentQuestionIndex++;
+    if(_currentQuestionIndex >= this.length) return null;
+    return _questions[_currentQuestionIndex];
+  }
+  void answer(bool isCorrect) {
+    if(isCorrect) _score++;
+  }
+}
 ```
 
 

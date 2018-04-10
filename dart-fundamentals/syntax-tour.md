@@ -36,6 +36,36 @@ baz(bool y) {
 var mylist = List<String>();
 var mylist = <List>[]
 ```
+Here are three different ways to initialize lists
+```dart
+// List demo
+main() {
+  foo();
+  bar();
+  baz();
+}
+
+// Dynamic declaration
+foo() {
+  var names = new List();
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  names.add(42); 
+}
+
+// Dynamic declaration
+bar() {
+  var names = new List<dynamic>();
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  names.add(42); 
+}
+
+// Static declaration
+baz() {
+  var names = new List<String>();
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  names.add(42); // Error
+}
+```
 
 ### Constructors
 ```dart
