@@ -1,7 +1,9 @@
 
 # Flutter snippets
 
-### 
+## States
+
+#### StatefulWidget example
 ```dart
 // a widget
 class QuizPage extends StatefulWidget {
@@ -30,7 +32,7 @@ class QuizPageState extends State<QuizPage> {
 ```
 
 
-### Containers
+## Containers
 
 
 #### Stack
@@ -69,7 +71,7 @@ new Expanded(
 ```
 
 
-### User input
+## User input
 
 
 #### inkWell
