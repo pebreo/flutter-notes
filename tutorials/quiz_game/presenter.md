@@ -3,9 +3,13 @@
 
 ## Animation
 
-1. Create the controller
-2. Create the animation object
-3. Utilize the animation object to transform text value or sizing of an element on the screen
+Creating animations in Flutter is surprisingly straightforward. In a nutshell,
+you just need to follow 4 steps. 
+
+1. Add special mixin to class 
+2. Declare `_controller` and `_animation` variables in the class
+3. Instatiate `_controller` and `_animation` 
+4. Utilize the animation object to transform text value or sizing of an element on the screen
 
 
 #### Setup
@@ -61,7 +65,4 @@ has to be rest like this:
 
 
 
-## TODO
-
-Stateful vs Stateless widget
 
