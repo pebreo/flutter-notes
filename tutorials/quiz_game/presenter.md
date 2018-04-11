@@ -48,6 +48,15 @@ new TextStyle(fontSize: _animation.value * 15),
 This works because we add the special mixin `SingleTickerProviderStateMixin` which will increment
 the `_animation.value` from 0.0 to 1.0, in other words from 0 to 100%.
 
+For rotation
+```dart
+const double PI = 3.1415926535897932;
+// inside the class
+child: new Transform.rotate(
+    angle: _animation.value * 2 * PI,
+    child: new Icon(Icons.done, size: _animation.value * 80)
+)
+```
 
 #### Resetting 
 The animation will only run once if we do not override the `didUpdateWidget`. The controller

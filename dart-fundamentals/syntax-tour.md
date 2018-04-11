@@ -5,10 +5,16 @@
 
 
 ### common expressions
-```
+```dart
 (myValue == true) ? "true" : "false"
 
 myobject?.data ?? ""
+```
+
+### arrow functions
+```dart
+foo(3);
+foo(var x) => x+1;
 ```
 
 ### Map literals

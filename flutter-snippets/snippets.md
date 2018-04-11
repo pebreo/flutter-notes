@@ -76,6 +76,7 @@ Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)
 ```
 
 
+
 ## Containers
 
 
@@ -134,6 +135,17 @@ child: new InkWell(
                       ))
 ```
 
+#### IconButton
+```dart
+new IconButton(
+            icon: new Icon(Icons.arrow_right),
+            color: Colors.white,
+            iconSize: 50.0,
+            onPressed: () => Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LandingPage()), (Route route) => route == null),
+)
+```
+
+
 #### floating action button
 ```dart
 void _incrementCounter() {
@@ -149,4 +161,34 @@ new FloatingActionButton(
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+```
+
+
+## Views
+
+
+#### ListView
+
+```dart
+class HomeWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+        itemCount: 20,
+        itemBuilder: (context, rowNumber) {
+        return new Container(
+              padding: new EdgeInsets.all(16.0),
+              child: new Column(
+                children: <Widget>[
+                  new Image.network("https://goo.gl/vFdXGc"),
+                  new Container(height: 8.0,),
+                  new Text("Instagram firebas course: check it out using the dsecription link below",
+                      style: new TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18.0)),
+                  new Divider(color: Colors.green),
+                ],
+              ));
+        });
+  }
+}
 ```
