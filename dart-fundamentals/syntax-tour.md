@@ -134,6 +134,40 @@ class Quiz {
 ### Final vs. Const 
 
 
+### Interfaces
+Interfaces are contracts that enforced upon a Class.
+In this case the interface is declared using `abstract class Warrior`.
+The code below does not run because the `Ninja` class does not
+follow what the interface has defined, specifically `Ninja` does
+not declare an `equip` method with parameter `weapon`.
+```
+abstract class Warrior {
+  equip(weapon);
+} 
+
+class Sword {
+}
+
+class Ninja implements Warrior {
+  // if i don't implement the equip() method, I get an error
+}
+
+class Pirate implements Warrior {
+  equip(weapon) {
+    print('yarr!');
+  }
+}
+
+equipForBattle(warrior) {
+  warrior.equip(new Sword());
+}
+
+void main() {
+  //equipForBattle(new Ninja());
+  equipForBattle(new Pirate());
+}
+```
+
 
 ## Resources
 https://www.dartlang.org/guides/language/language-tour
