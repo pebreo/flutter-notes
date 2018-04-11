@@ -20,22 +20,26 @@ Each page will have it's own `.dart` file and inside of each
 file we will write classes that define the layout as
 well as the logic. In Flutter, the layout and logic are encapsulated
 in so-called widgets. 99% of the time you will deal with two widget classes:
-`StatelessWidget` and `StatefulWidget`. 
+`StatelessWidget` and `StatefulWidget`. I will get into more detail 
+about the differences between stateful and stateless widgets in a later
+part of the tutorial.
 
-The `StatelessWidget` is tk.
-
-If we want to tk, we will need to use the `StatefulWidget` class. 
-
-The general logic for the entire app will be:
+The general logic for the entire app will be that the app displays a question
+then the user taps the true or false button. Then we record whether
+the user got the answer right or wrong and record a score. After the quiz is
+done, the app displays the player's score.
 
 * When the user starts the program, they will be shown a landing page that
 says: "The Quiz". The user will then tap the screen where they will be taken to the next page.
-The file involved for page are: `/pages/landing_page.dart`.
 
 * And the next page is the Quiz page. Most of our data structure and logic code
-will be dedicated to this page. 
+will be dedicated to this page. This page will display a two buttons: a true button and
+a false button. Between the buttons, we will display 
+Also, we should show nice animation using Flutter's animation controller.
 
-
+* Finally, the player will see there score in the score page. For this page,
+we print out the score as well as give an icon to start over. When we get to this page, 
+we should not be able to click back 
 
 If you've ever looked at Android code and felt daunted, you will be relieved that
 a basic app in Flutter is easier to grasp, at least from a web developers point of view.
@@ -63,11 +67,12 @@ The file(s) involved for UI:
 
 And the files involved in the logic of the Quiz page are:
 
-    pages/quiz_page.dart - 
+    pages/quiz_page.dart - a stateful widget that contains logic for displaying and recording questions
 
 
 TODO
 ---
+
 
 stateless widgets vs stateful widgets
 
@@ -78,3 +83,14 @@ Handling user input
 VoidCallback _onTap;
 
 onPressed:
+
+
+
+The `StatelessWidget` is tk.
+
+If we want to tk, we will need to use the `StatefulWidget` class. 
+
+
+Technically, a stateful widget is immuatable but we connect a STATE that changes
+In this case, the state that we are connecting is the QuizPageState.
+  This allows use to rebuild our visuals/UI.
