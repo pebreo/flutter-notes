@@ -3,6 +3,14 @@
 ```dart
 ```
 
+
+### common expressions
+```
+(myValue == true) ? "true" : "false"
+
+myobject?.data ?? ""
+```
+
 ### Map literals
 ```dart
 main() {
