@@ -8,20 +8,28 @@
 
 import 'package:flutter/material.dart';
 
-class LandingPage extends StatelessWidget {
+class ScorePage extends StatelessWidget {
+  final int score;
+  final int totalQuestions;
+
+  ScorePage(this.score, this.totalQuestions);
+
   @override
   Widget build(BuildContext context) {
     return new Material(
-      color: Colors.greenAccent,
-      child: new InkWell( // an invisible button
-        onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage())),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text('Lets Quizz', style: new TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold)),
-            new Text('Tap to start!', style: new TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold))
-          ],
-        )
+      color: Colors.blueAccent,
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Text("Your Score:", style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50.0)),
+          new Text(score.toString() + "/" + totalQuestions.toString() , style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50.0)),
+          new IconButton(
+            icon: new Icon(Icons.arrow_right),
+            color: Colors.white,
+            iconSize: 50.0,
+            onPressed: () => print('pressed'),
+            )
+        ],
       )
     ); 
   }
@@ -54,6 +62,11 @@ class QuizPageState extends State<QuizPage> {
     );
   }
 }
+```
+
+#### Navigate to another state
+```dart
+Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage())),
 ```
 
 
