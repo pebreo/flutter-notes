@@ -11,7 +11,7 @@
 myobject?.data ?? ""
 ```
 
-### arrow functions
+### arrow functions 
 ```dart
 foo(3);
 foo(var x) => x+1;
@@ -34,6 +34,7 @@ main() {
 main() {
     foo(x: true); // named parameter
     baz(false);  // unnamed param
+    bar(on: false, up: false, open: false);
 }
 
 foo({bool x}) {
@@ -42,6 +43,10 @@ foo({bool x}) {
 
 baz(bool y) {
   print(y);
+}
+
+bar({on = true, up = true, open=false}) {
+  print('ah');
 }
 ```
 ### Parametered types (Generics)
@@ -86,6 +91,7 @@ baz() {
 }
 ```
 
+
 ### Constructors
 ```dart
 class Person {
@@ -127,6 +133,58 @@ class Quiz {
   }
 }
 ```
+
+### async
+```dart
+
+Future<bool> longWait(foo) async {
+  var x = [1,2,3];
+  x.forEach((item) => print(item));
+  return true;
+}
+
+
+// Using then() syntax
+myAsync() {
+  longWait('myparam').then((bool value) {
+    print('done waiting');  
+  });
+  print('done');
+}
+
+// chaining
+// Using then() syntax
+myAsync() {
+  longWait('myparam').then((bool value) {
+    print('done waiting');  
+  }).then((bool value) {
+    print('done waiting');  
+  }).then((bool value) {
+    print('done waiting');  
+  });
+  print('done');
+}
+
+// Futures in order
+Future myAsync() async {
+    print('start');
+    bool ret = await longWait('async');
+    print(ret);
+    print('done');
+}
+
+// Futures in order
+myAsync() async {
+  print('start');
+  Future f1 = longWait('one');
+  Future f2 = longWait('two');
+  Future f3 = longWait('three');
+
+  await Future.wait([f1, f2, f3]);
+  print('done');
+}
+```
+
 
 ### Class variables
 
