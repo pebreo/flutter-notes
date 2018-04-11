@@ -1,6 +1,26 @@
 # Switching between states
 
 
+### User input
+
+iconButton
+```
+new IconButton(
+            icon: new Icon(Icons.arrow_right),
+            color: Colors.white,
+            iconSize: 50.0,
+            onPressed: () =>   Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new LandingPage()), (Route route) => route == null),
+            )
+```
+
+
+### Navigator
+
+```dart
+ Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null);
+```
+
+
 Most of the time you will use 
 ```dart
 class CorrectWrongOverlay extends StatefulWidget {
@@ -18,7 +38,7 @@ And it will be use in tk like this:
 new CorrectWrongOverlay(true, 
      // pass anynomous function
     () {
-
+         Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null);
     }
 )
 ```
