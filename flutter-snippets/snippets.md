@@ -66,7 +66,13 @@ class QuizPageState extends State<QuizPage> {
 
 #### Navigate to another state
 ```dart
-Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage())),
+Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage()))
+```
+
+#### Navigate to another state and remove previous state
+```dart
+// prevents navigating backwards
+ Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null)
 ```
 
 
