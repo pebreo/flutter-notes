@@ -1,6 +1,20 @@
 
 ### `this`
+Just like Javascript, the `this` property refers to the instance
 ```dart
+class Person {
+  var name;
+  Person(this.name);
+ 
+  sayName() {
+    print(this.name);
+  }
+}
+
+main() {
+  var p = new Person('john');
+  p.sayName();
+}
 ```
 
 
