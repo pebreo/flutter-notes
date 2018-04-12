@@ -135,7 +135,16 @@ class Quiz {
 ```
 
 ### async
+There are a couple of ways to write code that executes asynchronously.
+
+##### codes executes out-of-order
+The first is using the familiar `then()` syntax. When you use this
+syntax your code will not necessarily run in order. You can 
+only use the then when a `Future` object is return like in
+the `longWait` function below which returns a `Future<bool>`.
+
 ```dart
+import 'dart:async';
 
 Future<bool> longWait(foo) async {
   var x = [1,2,3];
@@ -152,8 +161,7 @@ myAsync() {
   print('done');
 }
 
-// chaining
-// Using then() syntax
+// chaining then() syntax
 myAsync() {
   longWait('myparam').then((bool value) {
     print('done waiting');  
@@ -164,6 +172,18 @@ myAsync() {
   });
   print('done');
 }
+
+main() {
+  myAsync();
+}
+```
+##### codes executes in order
+The other async syntax is to use `await` in your function.
+Using `await`, code will run in order if you use `await` on any function
+call that returns a `Future` object.
+
+```dart
+import 'dart:async';
 
 // Futures in order
 Future myAsync() async {
@@ -182,6 +202,35 @@ myAsync() async {
 
   await Future.wait([f1, f2, f3]);
   print('done');
+}
+
+main() {
+  myAsync();
+}
+```
+##### using `async` with `await`
+Note that whenever, you have an `await` in your function, you
+must annotate that function with an `async`.
+
+```dart
+import 'dart:async';
+
+Future<bool> longWait(foo) async {
+  var x = [1,2,3];
+  x.forEach((item) => print(item));
+  return true;
+}
+
+// Futures in order
+Future<dynamic> myAsync() async {
+    print('start');
+    bool ret = await longWait('async');
+    return ret;
+}
+
+main() async {
+ var b = await myAsync();
+  print(b);
 }
 ```
 
