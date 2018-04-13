@@ -28,6 +28,13 @@ doctor
 Select: Flutter: Run Flutter Doctor
 ```
 
+* Install Dart for commandline (Mac)
+```
+brew tap dart-lang/dart
+brew install dart
+dart myprogr.dart
+```
+
 ## First app 
 ```
 View -> Command Pallette
