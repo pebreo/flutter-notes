@@ -46,6 +46,11 @@ type: flutter
 $ flutter upgrade
 ```
 
+## Update flutter packages
+```
+$ flutter packages get
+```
+
 ## Resources
 
 flutterexamples.com
