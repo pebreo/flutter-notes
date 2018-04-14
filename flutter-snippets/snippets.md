@@ -227,3 +227,36 @@ class HomeWidget extends StatelessWidget {
   }
 }
 ```
+
+## Glossary
+
+#### tools
+Android Studio
+Atom
+IntelliJ
+Sublime
+VCS
+
+#### Flutter
+State
+StreamBuilder
+
+Store
+StoreConnector
+StoreProvider
+
+setState
+stream
+widget
+
+#### Design patterns / libraries
+MVP
+react
+redux
+
+
+#### Libraries
+react
+redux
+flutter_redux
+
