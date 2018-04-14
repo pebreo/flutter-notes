@@ -248,6 +248,50 @@ main() async {
 }
 ```
 
+### typedef
+Think of `typedef` is similar to class interfaces, that is,
+you create a contract which requires a specific input type
+as well as a specific output type. The typedef is
+useful for making callbacks interfaces (aka contracts).
+
+In the example below, we create typedef of a function
+called `LoggerFxn` which takes in a `String` and a returns `void`.
+Now any function that does not meet that contract requirements
+defined by `typedef void LoggerFxn(String msg)` should return
+an error.
+```dart
+// make function interface (contract)
+typedef void LoggerFxn(String msg);
+
+class Logger {
+  LoggerFxn out;
+  Logger() {
+    // upon construction, assign the print function to the out variable 
+    out = print;
+  }
+  void log(String msg) {
+    out(msg);
+  }
+}
+
+// notice that this function fits the definition of LoggerFxn
+void timeStampFxn(String msg) {
+  String timeStamp = new DateTime.now().toString(); 
+  print('${timeStamp}: $msg');
+}
+
+main() {
+  Logger logger = new Logger();
+  logger.out('hello');
+  
+  // override the out method with timeStampFxn
+  // This works since timeStampFxn meets the requirements
+  // that was defined by the typedef of LoggerFxn
+  logger.out = timeStampFxn;
+  logger.out('hello again');
+}
+```
+
 
 ### Class variables
 
