@@ -14,6 +14,8 @@ INSTALLATION (Mac)
 ```
 Android Studio>Tools>Android>AVD Manager ; Run
 $ flutter run
+
+open -a Simulator.app
 ```
 
 * VS Code config
@@ -49,6 +51,24 @@ $ flutter upgrade
 ## Update flutter packages
 ```
 $ flutter packages get
+```
+
+## Firebase
+```
+console.firebase.google.com
+
+
+Goto app->src->main->java->com->MainActivity.java
+com.yourcompany.friendlychat
+
+Download the google services.jsons
+
+Goto to google-services.json:
+  googleAppID: ->  "mobilesdk_app_id":
+  apiKey ->  "current_key"
+  databaseURL -> "firebase_url"
+
+Goto your app then Database then turn on Real Time Database
 ```
 
 ## Resources
