@@ -111,6 +111,45 @@ void _pushSaved() {
 ```
 
 
+#### Navigate and pass params to another state
+```dart
+
+
+class FirstPageState extends State<FirstPage> {
+
+  // defined in some button
+  onPressed: () {
+      var route = new MaterialPageRoute(
+          builder: (BuildContext context) => 
+              new NextPage(value: _textController.text),
+      );
+      Navigator.of(context).push(route);
+
+  }
+  
+}
+
+
+
+//located in the next state
+class NextPage extends StatefulWidget {
+    final String value;
+
+    // key is mandatory but 'value' is optional
+    NextPage({Key key, this.value}) : super(key: key);
+
+ // .. 
+}
+
+class NextPageState extends State<NextPage> {
+    // now you can use widget.value
+}
+
+Source:
+
+https://www.youtube.com/watch?v=MsycCv5r2Wo
+```
+
 
 ## Containers
 
