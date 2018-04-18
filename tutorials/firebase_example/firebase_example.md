@@ -47,8 +47,28 @@ Change the `build.gradle`
 
 ## Setup
 
-There are three steps involved in using the Firebase API. 
-The first step is 
+There are three general steps involved in using the Firebase API. 
+The first general step, is to instantiate the `FirebaseApp` class.
+You have to in two parameters to `FirebaseApp`: the name (which can
+be anything you), and an options object defined by `FirebaseOptions` class. 
+
+After the setup, we create the child reference which is a
+reference to the collection of JSON documents (e.g. `{'foo':bar}`).
+
+Since we want the counter to increment when we press a button,
+we associate the button with a callback called `_increment`.
+
+In the `_increment` method, we need to sync to the database
+and run the increment logic.
+To maintan syncing to the database, we will then setup a firebase stream callback using the `listen` method. Inside the callback, need
+to set to zero if necessary. To put the increment logic
+in callback for `runTransaction` method. 
+
+
+The other variable that we need handle is the `_messageRef` variable
+which will hold the message that will be displayed. The message string
+is: 
+
 
 In short, the steps are:
 1. 

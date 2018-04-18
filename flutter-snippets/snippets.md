@@ -151,6 +151,17 @@ https://www.youtube.com/watch?v=MsycCv5r2Wo
 ```
 
 
+### Navigate using url
+```dart
+Navigator.of(context).pushNamed('/review/$phone');
+```
+
+### JSON
+```dart
+
+```
+http://cogitas.net/parse-json-dart-flutter/
+
 ## Containers
 
 
@@ -298,4 +309,11 @@ redux
 react
 redux
 flutter_redux
+
+
+
+
+
+
+
 
