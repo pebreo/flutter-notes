@@ -65,7 +65,6 @@ bar({on = true, up = true, open=false}) {
 ```
 ### Parametered types (Generics)
 
-#### Example: Stateful Widget subclassing
 
 
 #### Lists initialization
@@ -145,6 +144,21 @@ class Quiz {
   void answer(bool isCorrect) {
     if(isCorrect) _score++;
   }
+}
+```
+
+### Static methods
+Static methods are methods available only
+to the class. For example
+```dart
+class Foo {
+  static void hello() {
+    print('hello');
+  }
+}
+
+main() {
+  Foo.hello();
 }
 ```
 
