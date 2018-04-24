@@ -75,6 +75,32 @@ Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)
  Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null)
 ```
 
+#### Add navigation to ListTile
+```
+_pushMember(Member member) {
+  Navigator.of(context).push(
+    new MaterialPageRoute(
+      builder: (context) => new MemberWidget(member)
+    )
+  );
+}
+
+Widget _buildRow(int i) {
+  return new Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: new ListTile(
+      title: new Text("${_members[i].login}", style: _biggerFont),
+      leading: new CircleAvatar(
+          backgroundColor: Colors.green,
+          backgroundImage: new NetworkImage(_members[i].avatarUrl)
+      ),
+      // Add onTap here:
+      onTap: () { _pushMember(_members[i]); },
+    )
+  );
+}
+```
+
 #### Navigate to another state
 ```dart
 void _pushSaved() {
@@ -276,6 +302,27 @@ class HomeWidget extends StatelessWidget {
         });
   }
 }
+```
+
+### Fonts
+```dart
+// pubspec.yml
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/gallery/example_code.dart
+    - packages/flutter_gallery_assets/videos/butterfly.mp4
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: packages/flutter_gallery_assets/pesto/fonts/Raleway-Regular.ttf
+        - asset: packages/flutter_gallery_assets/pesto/fonts/Raleway-Medium.ttf
+          weight: 500
+        - asset: packages/flutter_gallery_assets/pesto/fonts/Raleway-SemiBold.ttf
+          weight: 600
+    - family: AbrilFatface
+      fonts:
+        - asset: packages/flutter_gallery_assets/shrine/fonts/abrilfatface/AbrilFatface-Regular.ttf
 ```
 
 ## Glossary

@@ -116,6 +116,29 @@ class Person {
 var p = Person('john')
 ```
 
+### Constructors (custom)
+```dart
+class ChatModel {
+  
+  ChatModel(this.y) {
+    this.set();
+  }
+  void set() {
+    this.x = 9;
+  }
+  var x;
+  var y;
+
+}
+
+main() {
+  var c = new ChatModel(5);
+  print(c.x);
+
+  
+}
+```
+
 ### Getters
 ```dart
 class Quiz {

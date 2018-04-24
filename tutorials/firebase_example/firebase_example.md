@@ -68,9 +68,12 @@ The other variable that we need handle is the `_messageRef` database variable wh
 the logic to recording the message also inside the `_increment` method.
 
 You'll notice that we record to the database in two different ways.
-For `_counter` we use the method `runTransaction`, but for
-the message we use `_messageRef.push().ref()` and we
-pass in a Map type e.g. tk. 
+
+The `runTransaction()` is being used to **update** the database entry associated with `_counterRef`. We do an update to an existing entry, specifically, we update the integer value of the number of times a button is pushed.
+
+The `set()` method is being used along with `push()` to **add new entries** to the database. That value is a key value string using the same value updated in the `runTransaction()` method, i.e. the values `mutableData.value` and `transactionResult.dataSnapshot.value` are the same.
+
+
 
 
 ## DB transactions for the counter
@@ -85,3 +88,9 @@ Sources
 ---------
 
 https://raw.githubusercontent.com/flutter/plugins/master/packages/firebase_database/example/lib/main.dart
+
+
+###### writers insurance
+
+For `_counter` we use the method `runTransaction`, but for
+the message we use `_messageRef.push().ref()`.
