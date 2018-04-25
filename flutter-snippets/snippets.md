@@ -183,8 +183,49 @@ Navigator.of(context).pushNamed('/review/$phone');
 ```
 
 ### JSON
-```dart
+##### `pubspec.yaml`
+```yaml
+name: ws_demo
+description: A new Flutter project.
 
+dependencies:
+  web_socket_channel:
+
+dev_dependencies:
+  #flutter_test:
+  #  sdk: flutter
+
+```
+You should then run `pub get`
+
+##### `foo.yaml`
+```dart
+import 'package:web_socket_channel/io.dart';
+import 'dart:convert';
+
+class Message {
+  final String type;
+  final String message;
+
+  Message(this.type, this.message);
+
+  Message.fromJson(Map<String, dynamic> json)
+      : type = json['type'],
+        message = json['message'];
+
+  Map<String, dynamic> toJson() =>
+    {
+      'type': type,
+      'message': message,
+    };
+}
+
+main() {
+    var ws = new IOWebSocketChannel.connect('ws://localhost:8000/ws/chat/lobby/');
+    var msg = new Message('chat_message','herro');
+    print(JSON.encode(msg));
+    ws.sink.add(JSON.encode(msg));    
+}
 ```
 http://cogitas.net/parse-json-dart-flutter/
 
