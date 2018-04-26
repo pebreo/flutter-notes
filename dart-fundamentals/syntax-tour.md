@@ -139,6 +139,73 @@ main() {
 }
 ```
 
+### Constructors (initializer list)
+```dart
+class RoomPage {
+  final x;
+  final y;
+  final String user;
+  final String channel;
+  
+
+  const RoomPage({String key, this.user, this.channel}) : 
+    x = 3, // initializer list
+    y = 5; // second part of initializer list
+
+}
+
+main() {
+  var a = new RoomPage(user: 'ou');
+  print(a.x);
+  print(a.y);
+}
+
+```
+
+### Constructors (Flutter)
+```dart
+class RoomPage extends StatefulWidget {
+  final x;
+  final PersonData user;
+  final WebSocketChannel channel;
+  
+  const RoomPage({Key key, this.user, this.channel}) : super(key: key);
+  // or
+  const RoomPage({Key key, this.user, this.channel}) : 
+    x = 3;
+    super(key: key),
+  @override
+  State createState() => new RoomPageState();
+}
+
+// instantiation
+var foo = new RoomPage(user: myuser, channel: mychannel)
+
+```
+
+### Constructors (Flutter)
+```dart
+class RoomPage extends StatefulWidget {
+  final var key
+  final PersonData user;
+  final WebSocketChannel channel;
+  
+  const RoomPage({key, user, channel}) {
+    key = key;
+    user = user;
+    channel = channel;
+    super(key: key);
+  } 
+
+    @override
+  State createState() => new RoomPageState();
+}
+// instantiation:
+
+var foo = new RoomPage(user: myuser, channel: mychannel)
+
+```
+
 ### Getters
 ```dart
 class Quiz {
