@@ -75,31 +75,6 @@ Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)
  Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null)
 ```
 
-#### Add navigation to ListTile
-```
-_pushMember(Member member) {
-  Navigator.of(context).push(
-    new MaterialPageRoute(
-      builder: (context) => new MemberWidget(member)
-    )
-  );
-}
-
-Widget _buildRow(int i) {
-  return new Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: new ListTile(
-      title: new Text("${_members[i].login}", style: _biggerFont),
-      leading: new CircleAvatar(
-          backgroundColor: Colors.green,
-          backgroundImage: new NetworkImage(_members[i].avatarUrl)
-      ),
-      // Add onTap here:
-      onTap: () { _pushMember(_members[i]); },
-    )
-  );
-}
-```
 
 #### Navigate to another state
 ```dart
@@ -140,7 +115,6 @@ void _pushSaved() {
 #### Navigate and pass params to another state
 ```dart
 
-
 class FirstPageState extends State<FirstPage> {
 
   // defined in some button
@@ -154,8 +128,6 @@ class FirstPageState extends State<FirstPage> {
   }
   
 }
-
-
 
 //located in the next state
 class NextPage extends StatefulWidget {
@@ -179,10 +151,70 @@ https://www.youtube.com/watch?v=MsycCv5r2Wo
 
 ### Navigate using url
 ```dart
-Navigator.of(context).pushNamed('/review/$phone');
+main() {
+  var model = new ChatModel();
+  Widget app = new ScopedModel<ChatModel>(
+    model: model,
+    child: new MaterialApp(
+      home: LandingPage(),
+      theme: ThemeData(
+        canvasColor: Colors.blueGrey,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        accentColor: Colors.pinkAccent,
+        brightness: Brightness.dark,
+      ),
+      routes: <String, WidgetBuilder>
+      {
+        "/RoomPage": (BuildContext context) => new RoomPage(),
+        "/LoginPage": (BuildContext context) => new LoginPage(),
+      },
+    ),
+  );
+  runApp(app);
+} 
+
+// Usage using pushNamed
+onPressed: () {
+  Navigator.of(context).pushNamed("/RoomPage");
+},
+
+// Usage using popAndPushNamed
+void _clickItem() {
+  Navigator.popAndPushNamed(context, "/RoomPage");    
+}
 ```
 
-### JSON
+
+#### Add navigation to ListTile
+```
+_pushMember(Member member) {
+  Navigator.of(context).push(
+    new MaterialPageRoute(
+      builder: (context) => new MemberWidget(member)
+    )
+  );
+}
+
+Widget _buildRow(int i) {
+  return new Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: new ListTile(
+      title: new Text("${_members[i].login}", style: _biggerFont),
+      leading: new CircleAvatar(
+          backgroundColor: Colors.green,
+          backgroundImage: new NetworkImage(_members[i].avatarUrl)
+      ),
+      // Add onTap here:
+      onTap: () { _pushMember(_members[i]); },
+    )
+  );
+}
+```
+
+
+### JSON and Websockets
 ##### `pubspec.yaml`
 ```yaml
 name: ws_demo
@@ -190,10 +222,6 @@ description: A new Flutter project.
 
 dependencies:
   web_socket_channel:
-
-dev_dependencies:
-  #flutter_test:
-  #  sdk: flutter
 
 ```
 You should then run `pub get`
