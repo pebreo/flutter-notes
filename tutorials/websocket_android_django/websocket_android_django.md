@@ -15,7 +15,41 @@ environment already set up.
 
 ## Client
 
-We will use the 
+We begin with the most important part which is connecting 
+the client to the websockets. Making the connection,
+is just a matter of instantationing the `tk` class
+
+Once we connect, we then need to handle any events 
+that the client needs to listen to. When something happens,
+we then rebuild the widget. Note that only stateful widgets
+have this ability, not stateless widgets.
+
+We will use Flutter's built-in streaming API by wrapping
+the  `StreamBuilder` class around the widget that will be
+updated. Something like this:
+
+```dart
+      Widget _myStream() {
+        return new StreamBuilder(
+              stream: widget.channel.stream,
+              builder: (context, snapshot) {
+                if(snapshot.hasData) {
+                   var msg = json.decode(snapshot.data);
+                   // rebuild widget when this happens
+                   messages.add(new Message(type: 'chat_type', message: msg['message'], user: msg['user']));
+                }
+                return new Flexible(
+                  child: messages.isEmpty
+                      ? new Text(
+                          'Nobody has said anything yet... Break the silence!')
+                      : _buildTiles(messages),
+                );
+              },
+            );
+      }
+``` 
+
+The situations where we h
 
 #### The pages involved
 

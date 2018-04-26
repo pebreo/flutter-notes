@@ -66,7 +66,21 @@ class QuizPageState extends State<QuizPage> {
 
 #### Navigate to another state
 ```dart
+onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new AskRoomPage())),
+
+//or
+
 Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage()))
+```
+
+### Navigato to another state using `var route` and passing params to the other widget
+```
+var route = new MaterialPageRoute(
+  builder: (BuildContext context) =>
+      new RoomPage(user:person, channel: chan)
+);
+
+Navigator.of(context).push(route);
 ```
 
 #### Navigate to another state and remove previous state
