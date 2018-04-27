@@ -228,6 +228,15 @@ Widget _buildRow(int i) {
 ```
 
 
+### Pushing InkWell, Card, InkResponse
+You have to wrap the above in `GestureDetector` in order to handle respons 
+```dart
+new GestureDetector(
+  onTap: () { print('tapped!') },
+  child: new Card(...),
+);
+```
+
 ### JSON and Websockets
 ##### `pubspec.yaml`
 ```yaml

@@ -43,6 +43,16 @@ main() {
 }
 ```
 
+### Map 
+```dart
+var x = new Map();
+x['e'] = 1;
+x.putIfAbsent('e',() => 3);
+x.putIfAbsent('f',() => 1);
+x.putIfAbsent('f',() => 5);
+print(x);
+```
+
 ### Named parameters
 ```dart
 main() {
@@ -437,6 +447,24 @@ void main() {
 }
 ```
 
+### Files
+```dart
+import 'dart:convert';
+import 'dart:io';
+import 'dart:async';
+
+Future getFileData() async {
+   var x = await new File('words5.json').readAsString();
+   var y = await JSON.decode(x);
+   return y;
+}
+
+main() async {
+
+  var jdata = await getFileData();
+
+}
+```
 
 ## Resources
 https://www.dartlang.org/guides/language/language-tour
