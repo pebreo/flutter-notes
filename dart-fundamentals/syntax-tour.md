@@ -53,6 +53,28 @@ x.putIfAbsent('f',() => 5);
 print(x);
 ```
 
+### Maps - looping
+Using foreach
+```dart
+Map<String, int> example = { 'A': 1, 'B': 2, 'C': 3 };
+example.forEach((key,value) {
+  print(key);
+  print(value);
+})
+```
+Using for-loop
+```dart
+Map<String, int> example = { 'A': 1, 'B': 2, 'C': 3 };
+
+for (String key in example.keys) {
+  if (example[key] == 2 && key == 'B') {
+    break;
+  }
+}
+```
+
+
+
 ### Named parameters
 ```dart
 main() {

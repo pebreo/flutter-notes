@@ -64,6 +64,25 @@ class QuizPageState extends State<QuizPage> {
 }
 ```
 
+### MaterialApp
+```dart
+void main(){
+  runApp(new MaterialApp(
+    home: new QuizPage()
+  ));
+}
+```
+
+### Scaffold
+```dart
+return new Scaffold(
+  appBar: new AppBar(
+    title: new Text("Home Page"),
+  ),
+  body: futureBuilder,
+);
+```
+
 #### Navigate to another state
 ```dart
 onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new AskRoomPage())),
@@ -369,6 +388,10 @@ new FloatingActionButton(
 
 ## Views
 
+## Delayed
+```dart
+await new Future.delayed(const Duration(seconds: 3));
+```
 
 #### ListView
 
@@ -416,6 +439,8 @@ flutter:
       fonts:
         - asset: packages/flutter_gallery_assets/shrine/fonts/abrilfatface/AbrilFatface-Regular.ttf
 ```
+
+
 
 ## Glossary
 
