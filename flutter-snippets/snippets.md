@@ -3,6 +3,15 @@
 
 ## States
 
+#### main
+```dart
+void main(){
+  runApp(new MaterialApp(
+    home: new MyPage()
+  ));
+}
+```
+
 #### Stateless Widget example
 ```dart
 
@@ -32,6 +41,47 @@ class ScorePage extends StatelessWidget {
         ],
       )
     ); 
+  }
+}
+```
+
+### StatefulWidget blank
+```dart
+class MyPage extends StatefulWidget {
+
+  // connect the widget to the state
+  @override
+  State createState() => new MyPageState();
+}
+  
+class MyPageState extends State<MyPage> {
+  @override
+  void initState() {
+      super.initState(); 
+      // your code follows
+  }
+
+  @override
+  void dispose() {
+    // your code precedes
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(MyPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // your code follows
+    if(oldWidget._question != widget._question) {
+      _fontSizeAnimationController.reset();
+      _fontSizeAnimationController.forward();
+    }
+  }
+
+  @override
+
+  @override
+  Widget build(BuildContext context) {
+
   }
 }
 ```

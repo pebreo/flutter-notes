@@ -72,3 +72,27 @@ main() {
 
 /// https://docs.flutter.io/flutter/widgets/State/setState.html
 ```
+
+### Example 4
+```dart
+import 'dart:async';
+
+List<String> mynames = ['john','paul'];
+
+Future<bool> doCount() async {
+    
+    if(mynames.isNotEmpty) {
+      String s = mynames.last;
+      mynames.removeLast();
+      print(s);
+      return true;
+    }
+    return false;
+}
+
+main() {
+  Future.doWhile((){
+    return new Future.delayed(new Duration(milliseconds:1000), doCount);
+  });
+}
+```
