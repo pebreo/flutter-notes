@@ -1,6 +1,13 @@
 
 # Flutter snippets
 
+### Commands
+```
+flutter run
+
+flutter doctor -v
+```
+
 ## States
 
 #### main
