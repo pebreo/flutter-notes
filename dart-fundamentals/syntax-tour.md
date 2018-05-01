@@ -194,6 +194,21 @@ main() {
 
 ```
 
+### Constructors (initializer list), ex.2
+```dart
+class Foo {
+  List<String> words;
+  Foo(List<String> words) : words = new List<String>.from(words);
+  
+}
+
+void main() {  
+  List<String> heroes = ['batman','superman'];
+  var f = new Foo(heroes);
+  print(f.words);
+}
+```
+
 ### Constructors - cascade notation
 ```dart
 
@@ -306,6 +321,34 @@ main() {
 ### async
 There are a couple of ways to write code that executes asynchronously.
 
+#### quickstart - then vs. await
+```dart
+import 'dart:async';
+
+Future<List> longWait(String foo) async {
+  var x = new List<String>();
+  for(int i=1;i<=3;i++) {
+    x.add(foo);
+  }
+  return x;
+}
+
+main() async {
+
+  // asynchronous syntax ("then")
+  Future future = longWait('smile');
+  future.then((x) => print(x));
+  
+  // same as:
+  
+  // syncronous syntax ("await")
+  var y = await longWait('laugh');
+  print(y);
+  
+}
+```
+
+
 ##### codes executes out-of-order
 The first is using the familiar `then()` syntax. When you use this
 syntax your code will not necessarily run in order. You can 
@@ -324,6 +367,7 @@ Future<bool> longWait(foo) async {
 
 // Using then() syntax
 myAsync() {
+  longwait
   longWait('myparam').then((bool value) {
     print('done waiting');  
   });
@@ -555,6 +599,95 @@ equipForBattle(warrior) {
 void main() {
   //equipForBattle(new Ninja());
   equipForBattle(new Pirate());
+}
+```
+
+### Streams
+
+#### Example 1
+```dart
+import 'dart:async';
+
+int count = 0;
+StreamController<Null> myEventA = new StreamController<Null>.broadcast();
+
+
+main() async {
+  
+  // attach listener
+  myEventA.stream.listen((Null)=> print('event heard!'));
+
+  Future.doWhile(() async {
+    await new Future.delayed(new Duration(milliseconds:2000));
+    count++;
+    // limit number of calls
+    if(count<=3) {
+      // emit stream event
+      myEventA.add(null);
+      print('done waiting');
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+```
+
+#### Example 2
+This example pushes an integer.
+```dart
+import 'dart:async';
+
+int count = 0;
+StreamController<int> myEventA = new StreamController<int>.broadcast();
+
+
+main() async {
+  
+  // attach listener
+  myEventA.stream.listen((int count)=> print(count));
+  
+  Future.doWhile(() async {
+    await new Future.delayed(new Duration(milliseconds:2000));
+    count++;
+    // limit number of calls
+    if(count<=3) {
+      // emit stream event
+      myEventA.add(1);
+      print('done waiting');
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+```
+
+### Example 3
+This example shows how to make iterable streams
+```dart
+import 'dart:async';
+
+
+Future<int> sumIntegers(Stream<int> stream) async {
+  int sum=0;
+  await for (int num in stream) {
+    sum+=num;
+  }
+  return sum;
+}
+
+// stream of iterable
+Stream<int> generateIntegers(int to) async* {
+  for(int i=0; i<=to; i++) {
+    yield i;
+  }
+}
+
+main() async {
+  var stream = await generateIntegers(3);
+  var sum = await sumIntegers(stream);
+  print(sum);
 }
 ```
 
