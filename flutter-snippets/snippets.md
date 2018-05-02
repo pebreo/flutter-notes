@@ -4,8 +4,17 @@
 todo
 ```dart
 Navigator.popUntil(context, (_) => !Navigator.canPop(context));
+Navigator.popUntil(context, ModalRoute.withName('/login'));
 Navigator.pushReplacement(
       context, new MaterialPageRoute(builder: (BuildContext context) => route));
+
+navigator.pushNamedAndRemoveUntil('/calendar', ModalRoute.withName('/'));
+
+  Navigator.pushAndRemoveUntil(
+    context,
+    new MaterialPageRoute(builder: (BuildContext context) => new MyHomePage()),
+    ModalRoute.withName('/'),
+  );
 ```
 
 ### Commands
@@ -145,6 +154,21 @@ return new Scaffold(
   ),
   body: futureBuilder,
 );
+```
+
+#### Routes
+```dart
+void main() { // 1
+  runApp( // 2
+    new MaterialApp( //3
+      home: new Screen1(), //4
+      routes: <String, WidgetBuilder> { //5
+        '/screen1': (BuildContext context) => new Screen1(), //6
+        '/screen2' : (BuildContext context) => new Screen2() //7
+      },
+    )
+  );
+}
 ```
 
 #### Navigate to another state
