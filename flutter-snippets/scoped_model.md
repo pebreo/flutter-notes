@@ -22,3 +22,16 @@ import 'package:scoped_model/scoped_model.dart';
             }
     );
 ```
+
+
+```dart
+
+  Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
+      new ScopedModelDescendant<CounterModel>(
+                builder: (context, child, model) => new ListView(
+                  children: model.myItems.map((item)=>new Text(item.name)).toList()
+        ,),
+        );
+     
+    }
+```
