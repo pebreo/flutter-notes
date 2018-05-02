@@ -313,6 +313,33 @@ new GestureDetector(
 );
 ```
 
+### Snackback
+```dart
+// declare in statefulWidget
+final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+
+// child
+new Column(
+  children: <Widget>[
+
+    new Container(
+      width: 100.0, height: 100.0,
+      child: new FlatButton(
+        child: _partyImage,
+        onPressed: () => scaffoldKey.currentState.showSnackBar(
+          new SnackBar(
+            content: new Text("You pressed Image No.$index")
+          ),),
+        ),
+      ),
+    //Exact width and height, consider adding Flexible as a parent to the Container
+    new Text("$cat")
+  ],
+);
+```
+
+
 ### JSON and Websockets
 ##### `pubspec.yaml`
 ```yaml
