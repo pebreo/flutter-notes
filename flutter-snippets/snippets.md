@@ -1,6 +1,13 @@
 
 # Flutter snippets
 
+todo
+```dart
+Navigator.popUntil(context, (_) => !Navigator.canPop(context));
+Navigator.pushReplacement(
+      context, new MaterialPageRoute(builder: (BuildContext context) => route));
+```
+
 ### Commands
 ```
 flutter run
@@ -322,7 +329,6 @@ final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 // child
 new Column(
   children: <Widget>[
-
     new Container(
       width: 100.0, height: 100.0,
       child: new FlatButton(
