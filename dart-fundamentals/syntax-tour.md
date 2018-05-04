@@ -25,6 +25,33 @@ main() {
 myobject?.data ?? ""
 ```
 
+### Switch statement
+```dart
+var command = 'OPEN';
+switch (command) {
+  case 'CLOSED':
+    executeClosed();
+    break;
+  case 'PENDING':
+    executePending();
+    break;
+  case 'APPROVED':
+    executeApproved();
+    break;
+  case 'DENIED':
+    executeDenied();
+    break;
+  case 'OPEN':
+    executeOpen();
+    break;
+  default:
+    break;
+    // or
+    executeUnknown();
+
+}
+```
+
 ### arrow functions 
 ```dart
 foo(3);
@@ -225,6 +252,37 @@ querySelector('#confirm') // Get an object.
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
+### Constructors (`this` constructor)
+In this example, we how to populate the instance
+of the class `Person` 
+```dart
+// import 'package:meta/meta.dart'; // you need to install in your pubspec
+// https://pub.dartlang.org/packages/meta
+
+class Person {
+  Person({this.name, this.age});
+//   Person({@required this.name, @required this.age});
+  
+  Person.fromMap(Map map) : this(
+    name: map['name'],
+    age: map['age']
+  );
+  
+  String name;
+  int age;
+}
+
+void main(){
+  var x = <String, dynamic>{
+    "name": "john",
+    "age": 30
+  };
+  var p = new Person.fromMap(x);
+  print(p.name);
+  print(p.age);
+}
+
+```
 ### Constructors (Flutter)
 ```dart
 class RoomPage extends StatefulWidget {
