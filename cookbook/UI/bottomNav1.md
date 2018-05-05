@@ -23,10 +23,25 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Example1Page extends StatelessWidget {
-  
+class Example1Page extends StatefulWidget {
+
+  // connect the widget to the state
+  @override
+  State createState() => new Example1PageState();
+}
+
+class Example1PageState extends State<Example1Page> {
+  bool showBotNavbar = false;
+
   @override
   Widget build(BuildContext context) {
+
+  void _showBottomNavbar() {
+      print('edit');
+      setState((){
+          showBotNavbar==true ? showBotNavbar=false : showBotNavbar=true;
+      });
+    }
 
     var buildList =  new ListView.builder(
           itemCount: 5,
@@ -44,7 +59,7 @@ class Example1Page extends StatelessWidget {
       new IconButton(
         icon: new Icon(Icons.edit),
         tooltip: 'Show botnav',
-        onPressed: () => _showBottomNavbar,
+        onPressed: _showBottomNavbar,
       ),
     ];
   
@@ -83,18 +98,18 @@ class Example1Page extends StatelessWidget {
     );
 
     var buildBotNavbar = new BottomNavigationBar(items:
-    <BottomNavigationBarItem>[
-      new BottomNavigationBarItem(
-         icon: const Icon(Icons.ac_unit),
-         title: new Text('foo'),
-        
-       ),
-             new BottomNavigationBarItem(
-         icon: const Icon(Icons.access_alarms),
-         title: new Text('bar'),
-        
-       ),
-    ],
+        <BottomNavigationBarItem>[
+          new BottomNavigationBarItem(
+            icon: const Icon(Icons.ac_unit),
+            title: new Text('foo'),
+            
+          ),
+                new BottomNavigationBarItem(
+            icon: const Icon(Icons.access_alarms),
+            title: new Text('bar'),
+            
+          ),
+        ],
 
     );
 
@@ -107,15 +122,13 @@ class Example1Page extends StatelessWidget {
         padding: new EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
         child: body,
       ),
-      bottomNavigationBar: buildBotNavbar,
+      bottomNavigationBar: showBotNavbar ? buildBotNavbar : null,
     );
   }
   
 
-  void _showBottomNavbar(BuildContext context) {
-      print('show');
-    }
-
 
 }
+
+
 ```
