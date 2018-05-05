@@ -70,6 +70,21 @@ class ScorePage extends StatelessWidget {
 
 ### StatefulWidget blank
 ```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(new MyApp());
+ 
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Row & Column Example',
+      home: new MyPage(),
+    );
+  }
+}
+
 class MyPage extends StatefulWidget {
 
   // connect the widget to the state
