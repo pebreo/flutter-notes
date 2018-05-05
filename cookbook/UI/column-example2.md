@@ -1,5 +1,4 @@
 
-
 ```dart
 import 'package:flutter/material.dart';
 
@@ -55,6 +54,11 @@ class Example1Page extends StatelessWidget {
         icon: new Icon(Icons.help),
         tooltip: 'To Example 3',
         onPressed: () => _toExample3(context),
+      ),
+            new IconButton(
+        icon: new Icon(Icons.ac_unit),
+        tooltip: 'To Example 4',
+        onPressed: () => _toExample4(context),
       )
     ];
   
@@ -119,8 +123,16 @@ class Example1Page extends StatelessWidget {
         },
       ));
     }
+    void _toExample4(BuildContext context) {
+      Navigator.of(context).push(new MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) {
+          return new Example4Page();
+        },
+      ));
+    }
  
 }
+
 
 // Note: for simplicity, this is a stateless widget but, in a real app,
 // a full screen is likely to be a stateful widget.
@@ -311,4 +323,120 @@ class Example3Page extends StatelessWidget {
   
 }
 
+
+class Example4Page extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+
+    var buildList =  new ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, rowNumber) {
+          return new Container(
+                padding: new EdgeInsets.all(16.0),
+                child: new Column(
+                  children: <Widget>[
+                    new Image.network("https://goo.gl/vFdXGc"),
+                    new Container(height: 8.0,),
+                    new Text("Instagram firebas course: check it out using the dsecription link below",
+                        style: new TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0)),
+                    new Divider(color: Colors.green),
+                  ],
+                ));
+          });
+
+    List<Widget> menu = <Widget>[
+      new IconButton(
+        icon: new Icon(Icons.send),
+        tooltip: 'To Example 2',
+        onPressed: () => _toExample2(context),
+      ),
+      new IconButton(
+        icon: new Icon(Icons.help),
+        tooltip: 'To Example 3',
+        onPressed: () => _toExample3(context),
+      )
+    ];
+  
+    Widget subtitle = new Container (
+      padding: new EdgeInsets.all(8.0),
+      color: new Color(0X33000000),
+      child: new Text('Subtitle'),
+    );
+  
+    Widget middleSection = new Expanded(
+      child: new Container (
+        padding: new EdgeInsets.all(8.0),
+        color: new Color(0X9900CC00),
+        child: buildList,
+      ),
+    );
+  
+    Widget bottomBanner = new Container (
+      padding: new EdgeInsets.all(8.0),
+      color: new Color(0X99CC0000),
+      height: 48.0,
+      child: new Center(
+        child: new Text('Bottom Banner'),
+      ),
+    );
+  
+    Widget body = new Column(
+      // This makes each child fill the full width of the screen
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        subtitle,
+        middleSection,
+        bottomBanner,
+      ],
+    );
+
+    var buildBotNavbar = new BottomNavigationBar(items:
+    <BottomNavigationBarItem>[
+      new BottomNavigationBarItem(
+         icon: const Icon(Icons.ac_unit),
+         title: new Text('foo'),
+        
+       ),
+             new BottomNavigationBarItem(
+         icon: const Icon(Icons.access_alarms),
+         title: new Text('bar'),
+        
+       ),
+    ],
+
+    );
+
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Example 4 Page"),
+        actions: menu,
+      ),
+      body: new Padding(
+        padding: new EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+        child: body,
+      ),
+      bottomNavigationBar: buildBotNavbar,
+    );
+  }
+  
+    void _toExample2(BuildContext context) {
+      Navigator.of(context).push(new MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) {
+          return new Example2Page();
+        },
+      ));
+    }
+  
+    void _toExample3(BuildContext context) {
+      Navigator.of(context).push(new MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) {
+          return new Example3Page();
+        },
+      ));
+    }
+ 
+}
 ```
