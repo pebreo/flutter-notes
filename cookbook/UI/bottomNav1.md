@@ -1,6 +1,7 @@
 
 
 ```dart
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -77,41 +78,55 @@ class Example1PageState extends State<Example1Page> {
       ),
     );
   
+
+
     Widget bottomBanner = new Container (
-      padding: new EdgeInsets.all(8.0),
-      color: new Color(0X99CC0000),
-      height: 48.0,
-      child: new Center(
-        child: new Text('Bottom Banner'),
-      ),
-    );
-  
-    Widget body = new Column(
-      // This makes each child fill the full width of the screen
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        subtitle,
-        middleSection,
-        bottomBanner,
-      ],
-    );
-
-    var buildBotNavbar = new BottomNavigationBar(items:
-        <BottomNavigationBarItem>[
-          new BottomNavigationBarItem(
-            icon: const Icon(Icons.ac_unit),
-            title: new Text('foo'),
-            
-          ),
-                new BottomNavigationBarItem(
-            icon: const Icon(Icons.access_alarms),
-            title: new Text('bar'),
-            
-          ),
+        padding: new EdgeInsets.all(8.0),
+        color: new Color(0X99CC0000),
+        height: 48.0,
+        child: new Center(
+          child: new Text('Bottom Banner'),
+        ),
+      );
+    
+      Widget body = new Column(
+        // This makes each child fill the full width of the screen
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          subtitle,
+          middleSection,
+          bottomBanner,
         ],
+      );
+        
+    
+    var buildBotNavbar = new Theme(
+      data: Theme.of(context).copyWith(
+          canvasColor: Colors.black,
+          splashColor: Colors.yellowAccent,
+          unselectedWidgetColor: Colors.green,
+          primaryColor: Colors.yellow,
+          textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.grey))
+        ),
+      child: new BottomNavigationBar(items:
+                <BottomNavigationBarItem>[
+                  new BottomNavigationBarItem(
+                    icon: const Icon(Icons.ac_unit),
+                    title: new Text('foo'),
+                    
+                  ),
+                        new BottomNavigationBarItem(
+                    icon: const Icon(Icons.access_alarms),
+                    title: new Text('bar'),
+                    
+                  ),
+                ],
 
+            ),
     );
+    
+    
 
     return new Scaffold(
       appBar: new AppBar(
@@ -130,5 +145,8 @@ class Example1PageState extends State<Example1Page> {
 
 }
 
-
 ```
+
+sources
+
+https://stackoverflow.com/questions/49927929/flutter-bottomnavigationbar-colors
