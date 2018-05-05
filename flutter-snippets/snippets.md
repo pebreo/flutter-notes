@@ -334,6 +334,13 @@ Widget _buildRow(int i) {
 }
 ```
 
+#### Navigate back
+Each navigation is to another widget, and a popping means to go back to the
+previous widget.
+```dart
+Navigator.pop(context);
+```
+
 
 ### Pushing InkWell, Card, InkResponse
 You have to wrap the above in `GestureDetector` in order to handle respons 
