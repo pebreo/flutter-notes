@@ -15,6 +15,14 @@ navigator.pushNamedAndRemoveUntil('/calendar', ModalRoute.withName('/'));
     new MaterialPageRoute(builder: (BuildContext context) => new MyHomePage()),
     ModalRoute.withName('/'),
   );
+
+In pubspec.yaml install : meta: 1.1.2
+import 'package:meta/meta.dart';
+
+@immutable
+
+
+
 ```
 
 ### Commands
