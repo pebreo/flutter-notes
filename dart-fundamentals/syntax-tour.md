@@ -1,4 +1,25 @@
 
+### Example `pubspec.yaml`
+```yaml
+name: ws_demo
+description: A new Flutter project.
+
+dependencies:
+  web_socket_channel:
+  rxdart:
+
+dev_dependencies:
+  #flutter_test:
+  #  sdk: flutter
+
+```
+
+Usage:
+```
+pub install
+```
+
+
 ### `this`
 Just like Javascript, the `this` property refers to the instance
 ```dart

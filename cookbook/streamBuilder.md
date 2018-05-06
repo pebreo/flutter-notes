@@ -2,6 +2,10 @@
 #### Requirements
 rxdart: 0.16.7
 
+Source
+
+https://github.com/brianegan/flutter_stream_friends
+
 ```dart
 import 'package:flutter/material.dart';
 import 'dart:async';
