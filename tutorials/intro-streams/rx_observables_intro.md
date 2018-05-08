@@ -141,6 +141,44 @@ setTimeout(() => {
 
 ```
 
+### Cold observable vs Hot observables
+A cold observable is when a source 
+only pushes values to subscriber when observers
+`subscribe` to it.
+In contrast, hot observables generate sources
+whether anything is subscribed to it or not.
+
+Here's an example of a cold observable 
+where two observers subscribe to it.
+
+You'll notice that the emitted by the observable
+is reset for each subscription.
+
+NOTE: In Dart, cold is called "single subscription streams"
+and hot are "broadcast streams".
+```javascript
+var source = Rx.Observable.interval(1000);
+
+var subscription1 = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+
+var subscription2 = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+
+// unsubcribe after 3 seconds
+setTimeout(() => {
+  subscription1.dispose();
+  subscription2.dispose();
+}, 3000);
+
+```
+
 
 ### UI Streams (using events)
 This example shows how we can use an observable to handle
