@@ -1,7 +1,9 @@
-
+# Intro to RX (ReactiveX) javascript
 
 ### Stream of numbers
 ```javascript
+<script src="rx.lite.js"></script>
+
 var source = Rx.Observable.range(1,5);
 
 // create a callback in 
@@ -41,7 +43,66 @@ var subscription = source.subscribe(
 );
 ```
 
-### Time stream
+### Stream of maps
+```javascript
+console.clear();
+
+var map = new Map([['key1', 1], ['key2', 2]]);
+
+
+var source = Rx.Observable.from(map);
+
+var subscription = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+
+```
+
+### Stream of numbers - arraylike object
+```javascript
+console.clear();
+
+var arrayLike = { length: 1, foo: 5}
+
+// expects the length property 
+var source = Rx.Observable.from(arrayLike, (v,k) => k);
+
+var subscription = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+
+```
+
+### Stream of numbers from generator function
+```javascript
+console.clear();
+
+// a generator function
+function* fibonacci () {
+  var fn1 = 1;
+  var fn2 = 1;
+  while (1){
+    var current = fn2;
+    fn2 = fn1;
+    fn1 = fn1 + current;
+    yield current;
+  }
+}
+
+var source = Rx.Observable.from(fibonacci()).take(5);
+
+var subscription = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+```
+
+### Time stream - using timer()
 ```javascript
 // initial delay of 5 seconds, then 1 second intervals
 var source = Rx.Observable.timer(5000,1000).timestamp();
@@ -52,8 +113,36 @@ var subscription = source.subscribe(
 
 ```
 
+### Time stream 2  - using interval()
+```javascript
+// initial delay of 5 seconds, then 1 second intervals
+var source = Rx.Observable.interval(1000).timestamp();
 
-### UI Streams
+var subscription = source.subscribe(
+    x=> console.log(x.value + ': ' + x.timestamp)
+);
+
+```
+
+### Stream with expiration using dispose
+```javascript
+var source = Rx.Observable.interval(1000);
+
+var subscription = source.subscribe(
+    x => console.log('onNext: ' + x),
+  e => console.log('error: ' + e.message),
+  () => console.log('onComplete')
+);
+
+// unsubcribe after 3 seconds
+setTimeout(() => {
+  subscription.dispose();
+}, 3000);
+
+```
+
+
+### UI Streams (using events)
 This example shows how we can use an observable to handle
 mouse clicks by the user
 ```javascript
