@@ -3,6 +3,8 @@
 
 todo
 ```dart
+https://docs.flutter.io/flutter/rendering/FlexFit-class.html
+
 Navigator.popUntil(context, (_) => !Navigator.canPop(context));
 Navigator.popUntil(context, ModalRoute.withName('/login'));
 Navigator.pushReplacement(
@@ -584,6 +586,19 @@ flutter:
         - asset: packages/flutter_gallery_assets/shrine/fonts/abrilfatface/AbrilFatface-Regular.ttf
 ```
 
+
+## Theme - extending
+```dart
+var mytheme = new Theme(
+  // Find and Extend the parent theme using "copyWith". Please see the next 
+  // section for more info on `Theme.of`.
+  data: Theme.of(context).copyWith(accentColor: Colors.yellow),
+  child: new FloatingActionButton(
+    onPressed: null,
+    child: new Icon(Icons.add),
+  ),
+);
+```
 
 
 ## Glossary

@@ -21,3 +21,4 @@ https://stackoverflow.com/questions/36571924/how-can-i-merge-multiple-streams-in
 ## Futures as streams (Flutter specific)
 
 https://docs.flutter.io/flutter/dart-async/Future/asStream.html
+
