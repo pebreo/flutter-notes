@@ -789,6 +789,19 @@ main() async {
 }
 ```
 
+### Enums
+```dart
+
+enum Colors { red, green, blue, }
+
+void main(){
+  Colors c1;
+  c1 = Colors.red;
+  print(c1);
+  print(Colors.red.index);
+}
+```
+
 ## Resources
 https://www.dartlang.org/guides/language/language-tour
 
