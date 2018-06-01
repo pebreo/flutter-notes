@@ -95,7 +95,9 @@ class NextPageState extends State<NextPage> {
   @override
   void initState(){
     getNamePreference().then((name){
-      _name = name;
+      setState((){
+        _name = name;
+      });
     });
     super.initState();
   }
@@ -211,8 +213,10 @@ class NextPageState extends State<NextPage> {
       
     );
   }
-  void updateName(String value) {
-    _name = value;
+  void updateName(String name) {
+    setState((){
+     _name = name;
+    });
   }
 }
 ```
